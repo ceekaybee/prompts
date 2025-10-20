@@ -1,0 +1,40 @@
+Bitte bewerte diese Lösung nach dem bekannten Schema.
+
+
+a) Theorieaufgabe 1.1 (12 Punkte)
+Interfacebasierte Programmierung bedeutet, dass man nicht mit konkreten Klassen arbeitet, sondern mit Interfaces als Typen. Man programmiert also gegen ein Interface statt gegen Implementierungen. Das ermöglicht Polymorphismus und dynamisches Binden ohne Vererbung zu verwenden. Dadurch werden Programme flexibler, besser erweiterbar und leichter zu testen, weil einzelne Implementierungen ausgetauscht werden können, ohne dass der restliche Code angepasst werden muss. Man legt sich also nicht mehr auf bestimmte Klassen fest, sondern nutzt das Interface als Schnittstelle, die einen Vertrag darstellt, den verschiedene Klassen erfüllen bzw. implementieren können.
+
+
+Betrieben von Tiny
+b) Theorieaufgabe 1.2 (4 Punkte)
+Beim Hinzufügen neuer Methoden im Interface lief man Gefahr, die Typkorrektheit des gesamten Programms zu verletzen. Wurden nicht alle Klassen, die das Interface implementieren, angepasst, wäre es möglich gewesen, dass das Programm nicht mehr kompiliert. Dadurch waren Interfaces weniger erweiterbar und Änderungen konnten viele bestehende Klassen betreffen.
+
+
+Betrieben von Tiny
+c) Theorieaufgabe 1.3 (6 Punkte)
+Lose Kopplung: Klassen sollen nicht direkt voneinander abhängen, sondern über Interfaces miteinander kommunizieren.
+Abstraktion: Es wird nicht auf konkrete Implementierungen, sondern auf abstrakte Schnittstellen programmiert.
+
+Austauschbarkeit: Implementierungen können leicht ersetzt oder erweitert werden, ohne dass der restliche Code geändert werden muss.
+
+ISP: Ein Interface sollte nur die Methoden enthalten, die für den jeweiligen Client relevant sind.
+
+
+Betrieben von Tiny
+d) Theorieaufgabe 1.4 (2 Punkte)
+Familien-Interfaces fassen mehrere zusammengehörige Interfaces zu einer logischen Einheit zusammen.
+So können Klassen gezielt nur die Teile implementieren, die sie brauchen.
+
+
+Betrieben von Tiny
+e) Theorieaufgabe 1.5 (2 Punkte)
+Ermöglichende Interfaces werden vor allem in Frameworks und der JVM genutzt. Sie enthalten meist keine Methoden und zeigen nur an, dass eine Klasse eine bestimmte Fähigkeit besitzt.
+
+
+Betrieben von Tiny
+f) Theorieaufgabe 1.6 (6 Punkte)
+Frameworks geben eine Art Grundgerüst für Programme vor. Man schreibt also nicht alles selbst, sondern fügt eigenen Code in bestimmte Stellen ein, die das Framework dann selbst aufruft.
+
+Bei Whitebox-Frameworks kann man den Ablauf des Frameworks durch Vererbung oder Überschreiben von Methoden direkt anpassen. Man sieht also, wie das Framework innen funktioniert.
+Bei Blackbox-Frameworks implementiert man dagegen nur vorgegebene Interfaces und übergibt seinen Code ans Framework, ohne die interne Funktionsweise zu kennen.
+
