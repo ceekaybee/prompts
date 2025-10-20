@@ -1,0 +1,113 @@
+Du bist Korrektor an der FernUni in Hagen und korrigierst Einsendeaufgaben der Studenten.
+
+Anweisungen:
+- Grundlage der Bewertung ist die Musterlösung (wird vorgegeben).
+- Schreibe eine kurze, freundliche Bewertung pro Teilaufgabe.
+- Wenn volle Punktzahl erreicht wurde, schreibe nur:
+OK X P.
+(ohne zusätzliche Erklärung)
+- Andernfalls schreibe eine kurze Begründung und dann:
+X P.
+- Punktzahlen immer fett darstellen.
+- Am Ende das Gesamtergebnis: Gesamtergebnis: X P.
+
+Eingabeformat für dich:
+1. Aufgabenstellung (mit Unteraufgaben und max. Punktzahlen)
+2. Musterlösung
+3. Studentenlösung
+
+Bitte bewerte die folgende Studentenlösung anhand der Musterlösung nach obigem Schema.
+
+Aufgabenstellung: 
+a) Theorieaufgabe 1.1 (12 Punkte)
+1.1   Wie können Sie interface-basierte Programmierung charakterisieren?
+
+b) Theorieaufgabe 1.2 (4 Punkte)
+1.2   In alten Java-Versionen hatten Interfaces keine Default-Implementierung. Welchen Nachteil hatte dies?
+
+c) Theorieaufgabe 1.3 (6 Punkte)
+1.3 Welche Prinzipien sind im Zusammenhang mit Interface-basierter Programmierung wichtig?
+
+d) Theorieaufgabe 1.4 (2 Punkte)
+1.4 Wie können Familien-Interfaces eingesetzt werden?
+
+e) Theorieaufgabe 1.5 (2 Punkte)
+1.5 Wo finden ermöglichende Interfaces vornehmlich Verwendung?
+
+f) Theorieaufgabe 1.6 (6 Punkte)
+1.6 Wie arbeiten Frameworks und wie kann man Whitebox- und Blackbox-Frameworks charakterisieren?
+
+Musterlösung: 
+1.1
+Mögliche Charakterisierungen:
+- Interfaces als Typen (in Java und C#) anstelle von Klassen bei der Typisierung von Variablen (Variablendeklarationen)
+- Interfaces ermöglichen Polymorphismus und dynamisches Binden ohne Vererbung
+	- Interfaces als Schnittstelle: Nach IEEE: gemeinsame Grenze, über die hinweg Information gereicht wird, hinter der die Klasse ihre Entwurfsentscheidungen verbergen kann (Geheimnisprinzip)
+	- „Interface-Vererbung“: Interfaces sind in der Regel kein Ersatz für Mehrfachvererbung, Klassen implementieren Interfaces
+	- Entkopplung durch Verwendung von Interfaces
+	- Interfaces als Rollen
+
+1.2   
+Nachteil:
+Wenn man sich in einem JAVA-Programm dazu entscheidet, ein Interface durch Aufnahme einer weiteren Methode zu erweitern (was im Rahmen der Weiterentwicklung regelmäßig vorkommt), dann läuft man Gefahr, dass die Typkorrektheit des Programms verlorengeht, nämlich dann, wenn nicht alle Klassen, die dieses Interface implementieren, auch über die zusätzliche Methode verfügen. Dies ist z. B. dann ein Problem, wenn das Interface zu einem Framework gehört und man selbst, als Entwicklerin des Frameworks, keine Kontrolle über dessen Verwendungen durch andere hat.
+
+Daher erlauben sowohl Java als auch C# die Bereitstellung von Default-Implementierung von Methoden, die vererbt werden und somit zum Einsatz kommen, solange die implementierenden Klassen keine eigenen Implementationen vorsehen.
+
+ 
+1.3
+Im Kurstext werden drei Prinzipien genannt:
+- Prinzip wiederverwendbaren objektorientierten Designs: „Program to an interface, not to an implementation“
+- Interface Segregation Principle (im Zusammenhang mit partiellen Interfaces)
+- Dependency Inversion Principle (Umkehrung von Abhängigkeiten mit Interfaces)
+ 
+1.4
+Familieninterfaces werden in Zusammenhang mit Factories eingesetzt, auch anstelle von abstrakten Klassen, wenn die zu implementierende Klasse von anderen, nicht die Familie repräsentierenden Klassen erben soll.
+
+1.5
+Ermöglichende Interfaces finden vornehmlich in Blackbox-Frameworks Verwendung, bei denen das Aufrufen über Komposition und Delegation bzw. Forwarding erfolgt;
+
+1.6
+Anstatt wie bei der Benutzung von Programmbibliotheken üblich selbst die Ausführungssteuerung des Programms in die Hand zu nehmen und andere Klassen bei Bedarf aufzurufen, werden die Anwendungsklassen bei der Verwendung eines Frameworks in das Framework eingeklinkt (über sog. Hooks oder Plug points) und durch das Framework aufgerufen. Man nennt dies gelegentlich auch das Hollywood-Prinzip, wegen der gewerbeüblichen Ansage „don’t call us, we call you“.
+
+Bei Blackbox-Frameworks erfolgt das Aufrufen über Komposition und Delegation bzw. Forwarding, bei Whitebox-Frameworks über Vererbung und offene Rekursion.
+
+
+Studentenlösung: 
+a) Theorieaufgabe 1.1 (12 Punkte)
+Interface-basierte Programmierung kennzeichnet sich durch interfaces-as-types (Interfaces-als-Typen).
+
+Das bedeutet, statt dass eine Klasse A eine Klasse B direkt referenziert, wird der Teil der Funktionalität, den Klasse A von B benötigt, in ein Interface abstrahiert und das Interface kann dann von B realisiert (also die im interface deklarierten Funktionalitäten implementiert) werden. Klasse A referenziert dann nicht mehr B direkt, sondern lediglich das Interface.
+
+Durch diese Abstraktion wird die direkte Abhängigkeit zwischen Klassen aufgelöst und benötigte Funktionalitäten für eine konsumierende Klasse können von unterschiedlichen bereitstellenden Klassen unterschiedlich realisiert werden, sodass die Klasse, die schlussendlich tatsächlich konsumiert wird, dynamisch ausgetauscht werden kann. Außerdem kann dadurch die bereitgestellte Funktionalität auf die im Interface beschriebenen Funktionen reduziert werden, also der Sichtbarkeitsbereich von einer auf die andere Klasse eingeschränkt werden.
+
+
+Betrieben von Tiny
+b) Theorieaufgabe 1.2 (4 Punkte)
+Ohne Default-Implementierungen in Interfaces sind alle Klassen, die ein Interface realisieren, stark abhängig von der Erweiterung des Interfaces, da hinzugefügte Methoden im Interface dafür sorgen, dass alle Klassen, die dieses Interface implementieren, zwingend eine eigene Implementierung für diese Methode hinzufügen müssen.
+
+Solange sowohl das Interface als auch alle Realisierungen (also das Interface realisierende Klassen) im Bereich des veränderbaren Codes liegen, ist das erstmal nicht problematisch. Geht die Abhängigkeit aber über den veränderbaren Code hinaus und das Interface wird für Dritte bereitgestellt oder wird aus einem externen Paket von Dritten konsumiert, kann das zu Problemen führen. Default-Implementierungen können dann bereits im Interface eine Implementierung der Funktionalität bereitstellen, dessen Überschreiben in den Realisierungen optional ist.
+
+
+Betrieben von Tiny
+c) Theorieaufgabe 1.3 (6 Punkte)
+Das Interface Segregation Principle, welches besagt, dass ein Interface nur so viele Funktionalitäten veröffentlichen soll, wie alle Klassen, die es referenzieren, benötigen.
+
+
+Betrieben von Tiny
+d) Theorieaufgabe 1.4 (2 Punkte)
+Familien-Interfaces werden von mehreren Klassen implementiert, dessen konkrete Implementierung der Funktionalitäten des Interfaces sich unterscheiden können. Vorausgesetzt, dass das Interface in einer anderen Klasse als Typ verwendet wird, kann die konkrete Implementierung dann zur Laufzeit ausgetauscht werden.
+
+
+Betrieben von Tiny
+e) Theorieaufgabe 1.5 (2 Punkte)
+In Black-box-Frameworks, also solchen Arten von Frameworks, die die Implementierung hinter den von ihnen angebotenen Schnittstellen nicht offenlegen
+
+
+Betrieben von Tiny
+f) Theorieaufgabe 1.6 (6 Punkte)
+Nach dem Prinzip 'Inversion of control', wonach der auszuführende Code von dem Nutzer bzw. der Nutzerin des Frameworks entwickelt wird und dann in den Code des Frameworks eingebunden wird.
+
+Blackbox-Frameworks nutzen dabei Interfaces, da konkrete Implementierungen bei Blackbox-Frameworks nicht für die Nutzer:innen zugänglich sind.
+
+Whitebox-Frameworks nutzen hingegen Vererbung.
+
